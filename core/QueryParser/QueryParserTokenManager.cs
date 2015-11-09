@@ -25,10 +25,7 @@ namespace Lucene.Net.QueryParsers
     {
         private void InitBlock()
         {
-            System.IO.StreamWriter temp_writer;
-            temp_writer = new System.IO.StreamWriter(System.Console.OpenStandardOutput(), System.Console.Out.Encoding);
-            temp_writer.AutoFlush = true;
-            debugStream = temp_writer;
+            debugStream = new System.IO.StreamWriter(new System.IO.MemoryStream());
         }
 
         /// <summary>Debug output. </summary>
