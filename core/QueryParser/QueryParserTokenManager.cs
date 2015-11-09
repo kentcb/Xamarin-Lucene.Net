@@ -99,14 +99,15 @@ namespace Lucene.Net.QueryParsers
         {
             jjmatchedKind = kind;
             jjmatchedPos = pos;
-            try
-            {
-                curChar = input_stream.ReadChar();
-            }
-            catch (System.IO.IOException)
+
+            bool? systemIoException = false;
+            curChar = input_stream.ReadChar(ref systemIoException);
+
+            if (systemIoException.GetValueOrDefault())
             {
                 return pos + 1;
             }
+
             return JjMoveNfa_3(state, pos + 1);
         }
         internal static readonly ulong[] jjbitVec0 = new ulong[] { 0x1L, 0x0L, 0x0L, 0x0L };
@@ -599,11 +600,11 @@ namespace Lucene.Net.QueryParsers
                 ++curPos;
                 if ((i = jjnewStateCnt) == (startsAt = 36 - (jjnewStateCnt = startsAt)))
                     return curPos;
-                try
-                {
-                    curChar = input_stream.ReadChar();
-                }
-                catch (System.IO.IOException)
+
+                bool? systemIoException = false;
+                curChar = input_stream.ReadChar(ref systemIoException);
+
+                if (systemIoException.GetValueOrDefault())
                 {
                     return curPos;
                 }
@@ -649,15 +650,15 @@ namespace Lucene.Net.QueryParsers
         }
         private int JjMoveStringLiteralDfa1_1(long active0)
         {
-            try
-            {
-                curChar = input_stream.ReadChar();
-            }
-            catch (System.IO.IOException)
+            bool? systemIoException = false;
+            curChar = input_stream.ReadChar(ref systemIoException);
+
+            if (systemIoException.GetValueOrDefault())
             {
                 JjStopStringLiteralDfa_1(0, active0);
                 return 1;
             }
+
             switch (curChar)
             {
 
@@ -676,14 +677,15 @@ namespace Lucene.Net.QueryParsers
         {
             jjmatchedKind = kind;
             jjmatchedPos = pos;
-            try
-            {
-                curChar = input_stream.ReadChar();
-            }
-            catch (System.IO.IOException)
+
+            bool? systemIoException = false;
+            curChar = input_stream.ReadChar(ref systemIoException);
+
+            if (systemIoException.GetValueOrDefault())
             {
                 return pos + 1;
             }
+
             return JjMoveNfa_1(state, pos + 1);
         }
         private int JjMoveNfa_1(int startState, int curPos)
@@ -841,11 +843,11 @@ namespace Lucene.Net.QueryParsers
                 ++curPos;
                 if ((i = jjnewStateCnt) == (startsAt = 7 - (jjnewStateCnt = startsAt)))
                     return curPos;
-                try
-                {
-                    curChar = input_stream.ReadChar();
-                }
-                catch (System.IO.IOException)
+
+                bool? systemIoException = false;
+                curChar = input_stream.ReadChar(ref systemIoException);
+
+                if (systemIoException.GetValueOrDefault())
                 {
                     return curPos;
                 }
@@ -942,11 +944,11 @@ namespace Lucene.Net.QueryParsers
                 ++curPos;
                 if ((i = jjnewStateCnt) == (startsAt = 3 - (jjnewStateCnt = startsAt)))
                     return curPos;
-                try
-                {
-                    curChar = input_stream.ReadChar();
-                }
-                catch (System.IO.IOException)
+
+                bool? systemIoException = false;
+                curChar = input_stream.ReadChar(ref systemIoException);
+
+                if (systemIoException.GetValueOrDefault())
                 {
                     return curPos;
                 }
@@ -992,15 +994,15 @@ namespace Lucene.Net.QueryParsers
         }
         private int JjMoveStringLiteralDfa1_2(long active0)
         {
-            try
-            {
-                curChar = input_stream.ReadChar();
-            }
-            catch (System.IO.IOException)
+            bool? systemIoException = false;
+            curChar = input_stream.ReadChar(ref systemIoException);
+
+            if (systemIoException.GetValueOrDefault())
             {
                 JjStopStringLiteralDfa_2(0, active0);
                 return 1;
             }
+
             switch (curChar)
             {
 
@@ -1019,14 +1021,15 @@ namespace Lucene.Net.QueryParsers
         {
             jjmatchedKind = kind;
             jjmatchedPos = pos;
-            try
-            {
-                curChar = input_stream.ReadChar();
-            }
-            catch (System.IO.IOException)
+
+            bool? systemIoException = false;
+            curChar = input_stream.ReadChar(ref systemIoException);
+
+            if (systemIoException.GetValueOrDefault())
             {
                 return pos + 1;
             }
+
             return JjMoveNfa_2(state, pos + 1);
         }
         private int JjMoveNfa_2(int startState, int curPos)
@@ -1184,11 +1187,11 @@ namespace Lucene.Net.QueryParsers
                 ++curPos;
                 if ((i = jjnewStateCnt) == (startsAt = 7 - (jjnewStateCnt = startsAt)))
                     return curPos;
-                try
-                {
-                    curChar = input_stream.ReadChar();
-                }
-                catch (System.IO.IOException)
+
+                bool? systemIoException = false;
+                curChar = input_stream.ReadChar(ref systemIoException);
+
+                if (systemIoException.GetValueOrDefault())
                 {
                     return curPos;
                 }
@@ -1342,17 +1345,9 @@ namespace Lucene.Net.QueryParsers
             for (;;)
             {
                 bool? systemIoException = false;
-                try
-                {
-                    curChar = input_stream.BeginToken(ref systemIoException);
-                    if (systemIoException != null && systemIoException.HasValue && systemIoException.Value == true)
-                    {
-                        jjmatchedKind = 0;
-                        matchedToken = JjFillToken();
-                        return matchedToken;
-                    }
-                }
-                catch (System.IO.IOException)
+
+                curChar = input_stream.BeginToken(ref systemIoException);
+                if (systemIoException != null && systemIoException.HasValue && systemIoException.Value == true)
                 {
                     jjmatchedKind = 0;
                     matchedToken = JjFillToken();
@@ -1408,11 +1403,11 @@ namespace Lucene.Net.QueryParsers
                 int error_column = input_stream.EndColumn;
                 System.String error_after = null;
                 bool EOFSeen = false;
-                try
-                {
-                    input_stream.ReadChar(); input_stream.Backup(1);
-                }
-                catch (System.IO.IOException)
+
+                systemIoException = false;
+                curChar = input_stream.ReadChar(ref systemIoException);
+
+                if (systemIoException.GetValueOrDefault())
                 {
                     EOFSeen = true;
                     error_after = curPos <= 1 ? "" : input_stream.Image;
@@ -1424,6 +1419,7 @@ namespace Lucene.Net.QueryParsers
                     else
                         error_column++;
                 }
+
                 if (!EOFSeen)
                 {
                     input_stream.Backup(1);
